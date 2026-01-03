@@ -31,15 +31,6 @@ input, textarea { background: hsl(var(--muted)); color: hsl(var(--foreground)); 
 .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(45,34,10,0.12); }
 .card-gradient { background: var(--gradient-card); border: 1px solid hsl(var(--border)); padding: 1rem; }
 
-/* CSS-only navbar toggle for environments without working JS */
-#nav-toggle { display: none; }
-@media (max-width: 767.98px) {
-  .collapse.navbar-collapse { display: none !important; }
-  #nav-toggle:checked + label + .collapse.navbar-collapse { display: block !important; }
-  .collapse.navbar-collapse { background: hsl(var(--background)); padding: .5rem 1rem; }
-}
-
-/* Ensure mobile navbar overlays the hero and can receive focus */
 @media (max-width: 767.98px) {
   header { z-index: 2050; }
   .collapse.navbar-collapse {
