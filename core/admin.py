@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import SiteSetting, TeamMember, Match, ContactInfo, PageContent
+from .models import ContactSubmission
 
 
 @admin.register(SiteSetting)
@@ -25,3 +26,11 @@ class ContactInfoAdmin(admin.ModelAdmin):
 @admin.register(PageContent)
 class PageContentAdmin(admin.ModelAdmin):
     list_display = ('slug', 'title')
+
+
+@admin.register(ContactSubmission)
+class ContactSubmissionAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'subject', 'created_at')
+    readonly_fields = ('created_at',)
+    search_fields = ('name', 'email', 'subject', 'message')
+    list_filter = ('created_at',)
