@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+{% block title %}Matches — {{ settings.site_name }}{% endblock %}
+{% block content %}
+<section class="py-5 bg-background text-foreground">
+  <div class="container-centered">
+    <div class="text-center mb-4">
+      <div class="small text-primary text-uppercase">Fixtures</div>
+      <h2 class="font-display">Upcoming <span class="text-gradient-gold">Matches</span></h2>
+    </div>
+
+    <div class="row gx-4">
+      <div class="col-lg-8">
+        {% for m in upcoming %}
+        <div class="p-3 rounded-xl card-gradient mb-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <div class="small text-muted-foreground text-uppercase">{{ m.is_home|yesno:"Home,Away" }}</div>
+              <div class="h5 mb-0">vs {{ m.opponent }}</div>
+            </div>
+            <div class="text-muted-foreground small d-flex gap-3">
+              <div><i class="bi bi-calendar3 text-primary"></i> {{ m.date }}</div>
+              <div><i class="bi bi-clock text-primary"></i> {{ m.time }}</div>
+              <div><i class="bi bi-geo-alt text-primary"></i> {{ m.location }}</div>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <p class="text-muted-foreground">No matches scheduled.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

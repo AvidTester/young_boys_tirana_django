@@ -1,0 +1,65 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 45 85% 50%;
+    --primary-foreground: 0 0% 5%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 45 90% 55%;
+    --accent-foreground: 0 0% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 45 85% 50%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens */
+    --gold: 45 85% 50%;
+    --gold-light: 45 90% 60%;
+    --gold-dark: 45 80% 40%;
+    --charcoal: 0 0% 12%;
+    --charcoal-light: 0 0% 18%;
+
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(45, 85%, 50%), hsl(45, 90%, 60%));
+    --gradient-dark: linear-gradient(180deg, hsl(0, 0%, 8%), hsl(0, 0%, 5%));
+    --gradient-card: linear-gradient(145deg, hsl(0, 0%, 14%), hsl(0, 0%, 10%));
+
+    /* Shadows */
+    --shadow-gold: 0 4px 30px hsl(45, 85%, 50%, 0.3);
+    --shadow-dark: 0 10px 40px hsl(0, 0%, 0%, 0.5);
+
+    /* Typography */
+    --font-display: 'Oswald', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 45 85% 50%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 45 85% 50%;
+  }
+}

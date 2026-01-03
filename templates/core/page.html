@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+{% block title %}{{ page.title }} — {{ settings.site_name }}{% endblock %}
+{% block content %}
+<div class="py-5 bg-charcoal text-foreground">
+  <div class="container-centered">
+    <div class="text-center mb-4">
+      <h2 class="font-display">{{ page.title }}</h2>
+    </div>
+    <div class="text-muted-foreground">{{ page.body|linebreaks }}</div>
+  </div>
+</div>
+{% endblock %}

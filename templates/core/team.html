@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+{% block title %}Team — {{ settings.site_name }}{% endblock %}
+{% block content %}
+<section class="py-5 bg-charcoal text-foreground">
+  <div class="container-centered">
+    <div class="text-center mb-4">
+      <div class="small text-primary text-uppercase">The Squad</div>
+      <h2 class="font-display">Meet Our <span class="text-gradient-gold">Team</span></h2>
+    </div>
+
+    <div class="row g-3">
+      {% for p in team %}
+      <div class="col-sm-6 col-lg-3">
+        <div class="rounded-xl card-gradient p-3 position-relative overflow-hidden">
+          <div class="aspect ratio-3x4 bg-muted text-center d-flex align-items-center justify-content-center" style="height:220px;">
+            <img src="{{ p.photo_url }}" alt="{{ p.name }}" style="width:100%;height:100%;object-fit:cover;"/>
+          </div>
+          <div class="p-3 d-flex justify-content-between align-items-end">
+            <div>
+              <div class="small text-primary text-uppercase">{{ p.role }}</div>
+              <div class="font-display fw-bold">{{ p.name }}</div>
+            </div>
+            <div class="h2 text-primary opacity-50">#{{ p.number }}</div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

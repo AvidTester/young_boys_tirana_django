@@ -1,0 +1,92 @@
+{% extends 'core/base.html' %}
+{% block title %}Contact — {{ settings.site_name }}{% endblock %}
+{% block content %}
+<section class="py-5 bg-background text-foreground">
+  <div class="container-centered">
+    <div class="text-center mb-4">
+      <div class="small text-primary text-uppercase">Get In Touch</div>
+      <h2 class="font-display">Contact <span class="text-gradient-gold">Us</span></h2>
+    </div>
+
+    <div class="row gx-4">
+      <div class="col-lg-6">
+        <h3 class="font-display">We'd love to hear from you</h3>
+        <p class="text-muted-foreground">Whether you're interested in joining our team, becoming a sponsor, or just want to support Young Boys Tirana, we're here for you.</p>
+
+        <div class="mb-3">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="w-12 h-12 bg-primary/10 rounded d-flex align-items-center justify-content-center" style="width:48px;height:48px;background:hsla(0,0%,0%,0.06);border-radius:8px;">
+              <i class="bi bi-geo-alt text-primary"></i>
+            </div>
+            <div>
+              <div class="small text-muted-foreground text-uppercase">Location</div>
+              <div class="text-foreground">{{ contact.address }}</div>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="w-12 h-12 bg-primary/10 rounded d-flex align-items-center justify-content-center" style="width:48px;height:48px;background:hsla(0,0%,0%,0.06);border-radius:8px;">
+              <i class="bi bi-telephone text-primary"></i>
+            </div>
+            <div>
+              <div class="small text-muted-foreground text-uppercase">Phone</div>
+              <div class="text-foreground">{{ contact.phone }}</div>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="w-12 h-12 bg-primary/10 rounded d-flex align-items-center justify-content-center" style="width:48px;height:48px;background:hsla(0,0%,0%,0.06);border-radius:8px;">
+              <i class="bi bi-envelope text-primary"></i>
+            </div>
+            <div>
+              <div class="small text-muted-foreground text-uppercase">Email</div>
+              <div class="text-foreground">{{ contact.email }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="p-3 rounded-xl card-gradient">
+            <form>
+              <div class="row g-2">
+                <div class="col-sm-6">
+                  <label class="small text-muted-foreground text-uppercase">Name</label>
+                  <div class="input-group">
+                    <span class="input-group-text input-group-text-dark"><i class="bi bi-person"></i></span>
+                    <input type="text" class="form-control form-control-dark" placeholder="Your name">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <label class="small text-muted-foreground text-uppercase">Email</label>
+                  <div class="input-group">
+                    <span class="input-group-text input-group-text-dark"><i class="bi bi-envelope"></i></span>
+                    <input type="email" class="form-control form-control-dark" placeholder="your@email.com">
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-2">
+                <label class="small text-muted-foreground text-uppercase">Subject</label>
+                <div class="input-group">
+                  <span class="input-group-text input-group-text-dark"><i class="bi bi-card-text"></i></span>
+                  <input type="text" class="form-control form-control-dark" placeholder="What's this about?">
+                </div>
+              </div>
+
+              <div class="mt-2">
+                <label class="small text-muted-foreground text-uppercase">Message</label>
+                <div class="input-group">
+                  <span class="input-group-text input-group-text-dark align-items-start pt-2"><i class="bi bi-chat-left-text"></i></span>
+                  <textarea rows="4" class="form-control form-control-dark" placeholder="Your message..."></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-gold w-100 mt-3 text-uppercase">Send Message</button>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

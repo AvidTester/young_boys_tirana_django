@@ -1,0 +1,93 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Home — {{ settings.site_name }}{% endblock %}
+{% block content %}
+<section id="home" class="min-vh-75 d-flex align-items-center justify-content-center position-relative bg-gradient-dark" style="padding-top:40px;padding-bottom:40px;">
+  <div class="container-centered text-center position-relative" style="z-index:2;">
+    <div class="mb-4 position-relative d-inline-block">
+      <div style="position:absolute;inset:0;border-radius:50%;filter:blur(30px);background:rgba(255,215,0,0.08)"></div>
+      {% if settings and settings.logo_url %}
+        {% if settings.logo_url|slice:":7" == "assets/" %}
+          <img src="{% static settings.logo_url|slice:"7:" %}" alt="{{ settings.site_name }}" class="logo-circle shadow-gold">
+        {% else %}
+          <img src="{% static settings.logo_url %}" alt="{{ settings.site_name }}" class="logo-circle shadow-gold">
+        {% endif %}
+      {% else %}
+        <img src="{% static 'img/logo/logo.jpg' %}" alt="{{ settings.site_name }}" class="logo-circle shadow-gold">
+      {% endif %}
+    </div>
+    <h1 class="font-display display-3 mb-0">{{ settings.site_name }}</h1>
+    <h2 class="font-display display-5 text-gradient-gold">TIRANA</h2>
+    <p class="lead text-muted-foreground">{{ settings.tagline }}</p>
+
+    <div class="d-flex justify-content-center gap-3 mt-4">
+      <a href="{% url 'core:matches' %}" class="btn btn-gold px-4 py-2 text-uppercase">View Matches</a>
+      <a href="{% url 'core:about' %}" class="btn btn-outline-primary px-4 py-2 text-uppercase">Learn More</a>
+    </div>
+
+    <div class="row text-center mt-5 gx-5">
+      <div class="col-4">
+        <div class="h2 text-primary mb-0">2025</div>
+        <div class="small text-muted-foreground text-uppercase">Founded</div>
+      </div>
+      <div class="col-4">
+        <div class="h2 text-primary mb-0">{{ team|length }}+</div>
+        <div class="small text-muted-foreground text-uppercase">Players</div>
+      </div>
+      <div class="col-4">
+        <div class="h2 text-primary mb-0">∞</div>
+        <div class="small text-muted-foreground text-uppercase">Passion</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="matches" class="py-5 bg-background text-foreground">
+  <div class="container-centered">
+    <div class="text-center mb-4">
+      <div class="small text-primary text-uppercase">Fixtures</div>
+      <h2 class="font-display">Upcoming <span class="text-gradient-gold">Matches</span></h2>
+    </div>
+
+    <div class="row gx-4">
+      <div class="col-lg-8">
+        <div class="d-flex flex-column gap-3">
+          {% for m in upcoming %}
+          <div class="p-3 rounded-xl card-gradient">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex align-items-center gap-3">
+                <div class="me-2" style="width:8px;height:48px;border-radius:999px;background:hsl(var(--primary));"></div>
+                <div>
+                  <div class="small text-muted-foreground text-uppercase">{{ m.is_home|yesno:"Home,Away" }}</div>
+                  <div class="h5 mb-0">vs {{ m.opponent }}</div>
+                </div>
+              </div>
+              <div class="text-muted-foreground small d-flex gap-3">
+                <div><i class="bi bi-calendar3 text-primary"></i> {{ m.date }}</div>
+                <div><i class="bi bi-clock text-primary"></i> {{ m.time }}</div>
+                <div><i class="bi bi-geo-alt text-primary"></i> {{ m.location }}</div>
+              </div>
+            </div>
+          </div>
+          {% empty %}
+          <p class="text-muted-foreground">No upcoming matches.</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="p-3 rounded-xl card-gradient h-100">
+          <h5 class="mb-3"><span style="width:10px;height:10px;border-radius:999px;display:inline-block;background:hsl(var(--primary));margin-right:8px;"></span>Recent Results</h5>
+          {% for m in upcoming|slice:":3" %}
+          <div class="d-flex justify-content-between align-items-center py-2 border-bottom border-border">
+            <div class="text-foreground">{{ m.opponent }}</div>
+            <div class="badge rounded-pill" style="background:rgba(34,197,94,0.12);color:#4ade80;font-weight:700;padding:0.5rem;">{{ m.result }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
