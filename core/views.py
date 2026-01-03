@@ -26,7 +26,18 @@ def page(request, slug):
 
 
 def about(request):
-    return page(request, 'about')
+    settings = SiteSetting.objects.first()
+    about_page = PageContent.objects.filter(slug='about').first()
+    team = TeamMember.objects.all()[:8]
+    upcoming = Match.objects.all().order_by('date')[:3]
+    contact = ContactInfo.objects.first()
+    return render(request, 'core/about.html', {
+        'settings': settings,
+        'page': about_page,
+        'team': team,
+        'upcoming': upcoming,
+        'contact': contact,
+    })
 
 
 def matches(request):

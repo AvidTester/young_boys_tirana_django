@@ -1,0 +1,43 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}About — {{ settings.site_name }}{% endblock %}
+{% block content %}
+<section class="py-5 bg-background text-foreground">
+  <div class="container-centered">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-6 text-center">
+        {% if settings and settings.logo_url %}
+          {% if settings.logo_url|slice:":7" == "assets/" %}
+            <img src="{% static settings.logo_url|slice:"7:" %}" alt="{{ settings.site_name }}" class="logo-circle shadow-gold mb-3">
+          {% else %}
+            <img src="{% static settings.logo_url %}" alt="{{ settings.site_name }}" class="logo-circle shadow-gold mb-3">
+          {% endif %}
+        {% else %}
+          <img src="{% static 'img/logo/logo.jpg' %}" alt="{{ settings.site_name }}" class="logo-circle shadow-gold mb-3">
+        {% endif %}
+        <h1 class="font-display">{{ settings.site_name }}</h1>
+        <p class="lead text-muted-foreground">{{ settings.tagline }}</p>
+      </div>
+
+      <div class="col-lg-6">
+        <h3 class="font-display">Our Mission</h3>
+        <p class="text-muted-foreground">{% if page %}{{ page.body|linebreaks }}{% else %}We build a community of players and supporters focused on development, fair play and local pride.{% endif %}</p>
+
+        <div class="mt-4">
+          <h5 class="mb-2">Contact</h5>
+          {% if contact %}
+          <div class="small mb-1"><strong>Address:</strong> {{ contact.address }}</div>
+          <div class="small mb-1"><strong>Phone:</strong> {{ contact.phone }}</div>
+          <div class="small mb-1"><strong>Email:</strong> {{ contact.email }}</div>
+          {% else %}
+          <div class="small text-muted-foreground">No contact info available. Use the admin to add it.</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Team and Upcoming Matches removed from About page -->
+
+  </div>
+</section>
+{% endblock %}
